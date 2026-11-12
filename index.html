@@ -13,6 +13,7 @@
 <body>
 
 <header class="hud">
+  <!-- RPG EXP Bar -->
   <div class="exp-container" aria-hidden="true">
     <div class="exp-fill" id="expFill"></div>
   </div>
@@ -30,27 +31,24 @@
   <!-- SURFACE (PAGE 1) -->
   <section class="hero page active" id="home">
     <div class="sky" id="sky" aria-hidden="true">
-      <!-- Awan di bagian atas (Biru Tua/Tengah) -->
       <span class="spr cloud" data-spr="cloud" style="--y:8vh;--d:90s;--delay:-30s;--x:8vw"></span>
       <span class="spr cloud" data-spr="cloud" style="--y:22vh;--d:130s;--delay:-95s;--x:60vw;--px:6px"></span>
       <span class="spr cloud" data-spr="cloud" style="--y:12vh;--d:110s;--delay:-70s;--x:80vw;--px:5px"></span>
-
-      <!-- Awan BARU di bagian bawah (Biru Muda) -->
       <span class="spr cloud" data-spr="cloud" style="--y:55vh;--d:100s;--delay:-10s;--x:20vw;--px:7px"></span>
       <span class="spr cloud" data-spr="cloud" style="--y:70vh;--d:145s;--delay:-50s;--x:75vw;--px:5px"></span>
       <span class="spr cloud" data-spr="cloud" style="--y:60vh;--d:125s;--delay:-80s;--x:40vw;--px:8px"></span>
     </div>
     <div class="wrap stage">
       <div class="hero-text">
-        <span class="status"><i class="dot"></i>Open for internship · Feb – Jun 2027</span>
-        <p class="eyebrow">Intern Candidate · Data & Backend Engineer</p>
+        <span class="status"><i class="dot"></i>Open for Internship Opportunities</span>
+        <p class="eyebrow">Computer Science · Database Systems</p>
         <h1>Filbert Tanuarta</h1>
-        <p class="lead">A 5th-semester Computer Science student at BINUS University (Database Track). I am passionate about designing database architectures, processing data, and building efficient backend systems.</p>
+        <p class="lead">Computer Science undergraduate at BINUS University specializing in Database Systems. Adept at bridging database architecture with data analytics, combining normalized schema design with statistical data exploration.</p>
         <div class="cta">
-          <button class="btn" onclick="go(3)">View Projects</button>
-          <button class="btn alt" onclick="go(5)">Contact Me</button>
+          <button class="btn" onclick="go(3, true)">View Projects</button>
+          <button class="btn alt" onclick="go(5, true)">Contact Me</button>
         </div>
-        <p class="hint">Turn on your volume! Click the sun/moon or character to interact.</p>
+        <p class="hint">▶ Turn on audio! Click sun/moon or character to interact.</p>
       </div>
       <div class="scene">
         <span class="spr orb interactive-orb is-sun" data-spr="sun" title="Change time!"></span>
@@ -68,31 +66,28 @@
   <!-- DIRT LAYER (PAGE 2) -->
   <section class="layer dirt page" id="about">
     <div class="wrap">
-      <div class="sec-head"><span class="biome">Dirt Layer</span><h2>About Me</h2></div>
+      <div class="sec-head"><span class="biome">Dirt Layer</span><h2>About & Education</h2></div>
       <div class="about">
         <div class="panel prose">
-          <p>I am a 5th-semester Computer Science student taking the Database track at BINUS University. I have a strong interest in data management, from architecture design to implementation and analytics.</p>
-          <p>Beyond technical skills, I actively organize events within the campus badminton student unit. Handling tournament divisions has trained me to solve problems rapidly, collaborate seamlessly, and maintain operational efficiency under pressure.</p>
+          <h3>Profile Summary</h3>
+          <p>Computer Science undergraduate at BINUS University specializing in Database Systems. Adept at bridging database architecture with data analytics, combining normalized schema design with statistical data exploration.</p>
+          <p>Experienced in transforming transactional data into structured backend setups and developing analytical models to deliver actionable business insights.</p>
         </div>
         <div class="col">
           <div class="panel">
-            <h3>Player Stats</h3>
-            <dl class="stats">
-              <dt>University</dt><dd>BINUS University</dd>
-              <dt>Major</dt><dd>Computer Science</dd>
-              <dt>Track</dt><dd>Database</dd>
-              <dt>Semester</dt><dd>5</dd>
-              <dt>Location</dt><dd>Tangerang / Jakarta</dd>
-            </dl>
+            <h3>Education History</h3>
+            <ul class="quest">
+              <li><span><b>BINUS University</b><br>Aug 2024 – Present · Computer Science (Database Systems)</span></li>
+              <li><span><b>SMA Santa Maria Pekanbaru</b><br>2022 – 2024</span></li>
+            </ul>
           </div>
           <div class="panel">
-            <h3>Quest Target (Internship)</h3>
-            <ul class="quest">
-              <li><span><b>Role</b> Data Engineer / Backend</span></li>
-              <li><span><b>Start</b> February 2027</span></li>
-              <li><span><b>Duration</b> 4 – 6 months</span></li>
-              <li><span><b>Focus</b> Relational DB & Analytics</span></li>
-            </ul>
+            <h3>Player Profile</h3>
+            <dl class="stats">
+              <dt>Location</dt><dd>Tangerang, Indonesia</dd>
+              <dt>Specialization</dt><dd>Database & Analytics</dd>
+              <dt>Contact</dt><dd>filberttanuarta@gmail.com</dd>
+            </dl>
           </div>
         </div>
       </div>
@@ -102,22 +97,69 @@
   <!-- STONE CAVE (PAGE 3) -->
   <section class="layer stone page" id="skills">
     <div class="wrap">
-      <div class="sec-head"><span class="biome">Stone Cave</span><h2>Skills & Tools</h2></div>
+      <div class="sec-head"><span class="biome">Stone Cave</span><h2>Skills & Technical Inventory</h2></div>
       <div class="panel">
-        <h3>Technical Inventory</h3>
+        <h3>Technical Competencies</h3>
         <div class="inv">
-          <div class="item"><span class="slot"><span class="spr" data-spr="gem" data-gem="diamond" style="--px:5px"></span></span>
-            <div><h3>SQL & Database</h3><div class="lv"><div class="bar"><i style="--lv:85%"></i></div><span>Lv 85</span></div><p>Complex queries, data architecture, and relational DBs.</p></div></div>
-          <div class="item"><span class="slot"><span class="spr" data-spr="gem" data-gem="lapis" style="--px:5px"></span></span>
-            <div><h3>Python</h3><div class="lv"><div class="bar"><i style="--lv:80%"></i></div><span>Lv 80</span></div><p>NumPy, Matplotlib, data manipulation, and scripting.</p></div></div>
-          <div class="item"><span class="slot"><span class="spr" data-spr="gem" data-gem="iron" style="--px:5px"></span></span>
-            <div><h3>C & C++</h3><div class="lv"><div class="bar"><i style="--lv:75%"></i></div><span>Lv 75</span></div><p>Data structures, algorithms, and fundamental programming.</p></div></div>
-          <div class="item"><span class="slot"><span class="spr" data-spr="gem" data-gem="emerald" style="--px:5px"></span></span>
-            <div><h3>Hadoop & Hive</h3><div class="lv"><div class="bar"><i style="--lv:65%"></i></div><span>Lv 65</span></div><p>Big Data ecosystem exploration and data warehousing.</p></div></div>
-          <div class="item"><span class="slot"><span class="spr" data-spr="gem" data-gem="amethyst" style="--px:5px"></span></span>
-            <div><h3>UML Modeling</h3><div class="lv"><div class="bar"><i style="--lv:80%"></i></div><span>Lv 80</span></div><p>Use case design, class diagrams, and software requirements.</p></div></div>
-          <div class="item"><span class="slot"><span class="spr" data-spr="gem" data-gem="gold" style="--px:5px"></span></span>
-            <div><h3>Tableau</h3><div class="lv"><div class="bar"><i style="--lv:70%"></i></div><span>Lv 70</span></div><p>Exploratory data visualization and business dashboards.</p></div></div>
+          <div class="item">
+            <span class="slot"><span class="spr" data-spr="gem" data-gem="diamond"></span></span>
+            <div>
+              <h3>Programming & Web Tech</h3>
+              <div class="tags">
+                <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">C</span><span class="tag">JavaScript</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Tailwind CSS</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="item">
+            <span class="slot"><span class="spr" data-spr="gem" data-gem="emerald"></span></span>
+            <div>
+              <h3>Data Engineering & Databases</h3>
+              <div class="tags">
+                <span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">Firebase (Firestore & Realtime DB)</span><span class="tag">Pentaho Data Integration (Spoon)</span><span class="tag">Star Schema Modeling</span><span class="tag">3NF Normalization</span><span class="tag">ERD Architecture</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <span class="slot"><span class="spr" data-spr="gem" data-gem="gold"></span></span>
+            <div>
+              <h3>Analytics & Visualization</h3>
+              <div class="tags">
+                <span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">Scikit-learn</span><span class="tag">EDA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <span class="slot"><span class="spr" data-spr="gem" data-gem="lapis"></span></span>
+            <div>
+              <h3>Statistical Methods & Modeling</h3>
+              <div class="tags">
+                <span class="tag">ANOVA</span><span class="tag">Chi-Square Test</span><span class="tag">Pearson & Spearman Correlation</span><span class="tag">Logistic Regression</span><span class="tag">Hypothesis Testing</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <span class="slot"><span class="spr" data-spr="gem" data-gem="iron"></span></span>
+            <div>
+              <h3>Tools & Developer Ecosystem</h3>
+              <div class="tags">
+                <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Vercel</span><span class="tag">Google Apps Script</span><span class="tag">VS Code</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <span class="slot"><span class="spr" data-spr="gem" data-gem="amethyst"></span></span>
+            <div>
+              <h3>Soft Skills & Operations</h3>
+              <div class="tags">
+                <span class="tag">Critical Thinking</span><span class="tag">Problem Solving</span><span class="tag">Data & Inventory Reconciliation</span><span class="tag">Team Collaboration</span><span class="tag">Leadership</span><span class="tag">Time Management</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -126,29 +168,54 @@
   <!-- TREASURE MINE (PAGE 4) -->
   <section class="layer ore page" id="projects">
     <div class="wrap">
-      <div class="sec-head"><span class="biome">Treasure Mine</span><h2>Data & Software Projects</h2></div>
+      <div class="sec-head"><span class="biome">Treasure Mine</span><h2>Projects Experience</h2></div>
       <div class="tips">
+        
+        <!-- NEW PROJECT: Personal Expense Tracker -->
         <article class="tip">
-          <div class="tip-head"><span class="slot sm"><span class="spr" data-spr="gem" data-gem="emerald"></span></span><h3 class="r1">EGIER Capacity Analytics</h3></div>
-          <p class="kind">Data Analytics · Python Project</p>
-          <p>Conducted predictive modeling to project warehouse storage capacity requirements for an outdoor equipment manufacturer using Taylor Series methodologies.</p>
-          <p class="stat">Tech <b>Python · NumPy · Matplotlib</b></p>
-          <a class="tip-link" href="https://github.com/FilbertTanuarta" target="_blank" rel="noopener">View GitHub ›</a>
+          <div class="tip-head"><span class="slot sm"><span class="spr" data-spr="chest"></span></span><h3 class="r1">Personal Expense & Income Tracker</h3></div>
+          <p class="kind">Web Application · Financial Management</p>
+          <p>Engineered a responsive financial tracking application with cloud synchronization using Firebase Firestore. Features custom Wallet ID authentication, category-based transaction logging (Food, Transport, Savings, Investment, Medical), date filtering, and multi-currency formatting.</p>
+          <p class="stat">Tech <b>Tailwind CSS · JavaScript · Firebase Firestore · Vercel</b></p>
+          <a class="tip-link" href="https://github.com/FilbertTanuarta" target="_blank" rel="noopener">View Repository ›</a>
         </article>
+
+        <!-- E-Commerce ETL Pipeline -->
         <article class="tip">
-          <div class="tip-head"><span class="slot sm"><span class="spr" data-spr="gem" data-gem="lapis"></span></span><h3 class="r2">Game Sales Dashboard</h3></div>
-          <p class="kind">Exploratory Visualization · Team Project</p>
-          <p>Performed extensive data extraction and created visual dashboards to analyze global video game sales distributions across multiple platforms and genres.</p>
-          <p class="stat">Tech <b>Python · Tableau</b></p>
-          <a class="tip-link" href="https://github.com/FilbertTanuarta" target="_blank" rel="noopener">View Report ›</a>
-        </article>
-        <article class="tip">
-          <div class="tip-head"><span class="slot sm"><span class="spr" data-spr="chest"></span></span><h3 class="r3">StudyBuddy App</h3></div>
-          <p class="kind">Software Engineering · Academic Project</p>
-          <p>Developed a matchmaking web platform for student study groups. Designed full UML diagrams, system requirements, and relational database schemas.</p>
-          <p class="stat">Tech <b>UML · Relational DB · HTML/JS</b></p>
+          <div class="tip-head"><span class="slot sm"><span class="spr" data-spr="gem" data-gem="emerald"></span></span><h3 class="r1">End-to-End E-Commerce Data Engineering Pipeline</h3></div>
+          <p class="kind">Data Engineering · Batch ETL</p>
+          <p>Engineered an automated batch ETL pipeline using Pentaho Data Integration (PDI) to extract, standardize, and load over 10,000 raw e-commerce transaction logs. Architected a multidimensional Star Schema connected to 5 Dimension tables and developed an interactive Power BI dashboard.</p>
+          <p class="stat">Tech <b>Pentaho Data Integration · MySQL · Power BI · Star Schema</b></p>
           <a class="tip-link" href="https://github.com/FilbertTanuarta" target="_blank" rel="noopener">View Architecture ›</a>
         </article>
+
+        <!-- Solar Panel Database -->
+        <article class="tip">
+          <div class="tip-head"><span class="slot sm"><span class="spr" data-spr="gem" data-gem="diamond"></span></span><h3 class="r2">Solar Panel Inventory & Installation Database System</h3></div>
+          <p class="kind">Database Architecture · Relational Design</p>
+          <p>Modeled and normalized an unstructured (UNF) solar panel installation and sales dataset into 3NF. Architected relational schemas comprising master and transactional tables, executing MySQL DDL/DML scripts and optimized JOIN queries.</p>
+          <p class="stat">Tech <b>MySQL · 3NF Normalization · Relational DB Design</b></p>
+          <a class="tip-link" href="https://github.com/FilbertTanuarta" target="_blank" rel="noopener">View Schema ›</a>
+        </article>
+
+        <!-- Video Game Sales Visualization -->
+        <article class="tip">
+          <div class="tip-head"><span class="slot sm"><span class="spr" data-spr="gem" data-gem="gold"></span></span><h3 class="r3">Data Visualization & Market Dynamics in Video Game Sales</h3></div>
+          <p class="kind">Exploratory Data Analysis · Analytics</p>
+          <p>Conducted EDA on global video game sales datasets to evaluate market dynamics and purchasing preferences. Built visual analytics models (box plots, stacked area charts) and an interactive Tableau dashboard consolidating regional breakdowns.</p>
+          <p class="stat">Tech <b>Tableau · Python · Visual Analytics · EDA</b></p>
+          <a class="tip-link" href="https://github.com/FilbertTanuarta" target="_blank" rel="noopener">View Dashboard ›</a>
+        </article>
+
+        <!-- HR Attrition Analysis -->
+        <article class="tip">
+          <div class="tip-head"><span class="slot sm"><span class="spr" data-spr="gem" data-gem="lapis"></span></span><h3 class="r2">Human Resource Attrition & Workforce Optimization Analysis</h3></div>
+          <p class="kind">Statistical Analytics · Workforce Modeling</p>
+          <p>Analyzed employee records to uncover patterns driving terminations. Executed bivariate correlation tests (Pearson r, Spearman rho, Chi-Square), built a predictive logistic regression model, and designed actionable HR budget reallocation pipelines.</p>
+          <p class="stat">Tech <b>Python · Pandas · SciPy · Logistic Regression</b></p>
+          <a class="tip-link" href="https://github.com/FilbertTanuarta" target="_blank" rel="noopener">View Analysis ›</a>
+        </article>
+
       </div>
     </div>
   </section>
@@ -156,16 +223,29 @@
   <!-- CRYSTAL CAVE (PAGE 5) -->
   <section class="layer deep page" id="experience">
     <div class="wrap">
-      <div class="sec-head"><span class="biome">Crystal Cave</span><h2>Experience & Achievements</h2></div>
+      <div class="sec-head"><span class="biome">Crystal Cave</span><h2>Job & Operational Experience</h2></div>
       <div class="toasts">
-        <div class="toast"><span class="slot sm"><span class="spr" data-spr="star"></span></span>
-          <div><span class="cat">Organization · 2025 – 2026</span><h3>BINUS Badminton UKM Administrator</h3><p>Active administrator managing operational routines and facilitating events for the campus sports unit.</p></div></div>
-        <div class="toast"><span class="slot sm"><span class="spr" data-spr="gem" data-gem="emerald"></span></span>
-          <div><span class="cat">Committee · 2026</span><h3>Match Division, BINUS Badminton Cup</h3><p>Formulated match brackets and ensured seamless technical execution during the live tournament.</p></div></div>
+        
         <div class="toast"><span class="slot sm"><span class="spr" data-spr="book"></span></span>
-          <div><span class="cat">Work Experience · 2026</span><h3>Sales Promotion, Jakarta Fair</h3><p>Managed on-site product promotions, warehouse restocking logistics, and end-of-day sales reconciliation.</p></div></div>
-        <div class="toast"><span class="slot sm"><span class="spr" data-spr="heart"></span></span>
-          <div><span class="cat">Project Management · 2025</span><h3>Event Organizer, ELYSIUM.LEAGUE</h3><p>Conceptualized and executed a Mobile Legends esports tournament, managing rulesets and social media copy.</p></div></div>
+          <div>
+            <span class="cat">Matcharista | The Matcha Pair · Nov 2026 – Present</span>
+            <h3>Standard Operating & Stock Operations</h3>
+            <p>• Standard Operating Procedure Execution: Prepared beverages in strict compliance with SOPs to maintain product consistency.<br>
+            • Digital Merchant Platform Management: Operated live merchant apps (GoFood, GrabMerchant, Shopee Partner), managing real-time stock updates.<br>
+            • Inventory Tracking: Conducted daily stock counts and ingredient inventory management to ensure material availability.</p>
+          </div>
+        </div>
+
+        <div class="toast"><span class="slot sm"><span class="spr" data-spr="star"></span></span>
+          <div>
+            <span class="cat">Sales Promotion Boy (SPB) | Mabell – PRJ · Jun 2026 – Jul 2026</span>
+            <h3>Customer Engagement & Financial Reconciliation</h3>
+            <p>• Sales Promotion & Engagement: Promoted product lines directly to event attendees using mobile sales carts to achieve daily sales targets.<br>
+            • Warehouse & Logistics Support: Coordinated stock receiving, replenishment, and cart stock management during high-traffic hours.<br>
+            • Financial Reconciliation: Reconciled daily cash and digital customer payments against itemized sales records.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -173,22 +253,18 @@
   <!-- LAVA CORE (PAGE 6) -->
   <section class="layer lava page" id="contact">
     <div class="wrap">
-      <div class="sec-head"><span class="biome">Lava Core</span><h2>Contact & Network</h2></div>
+      <div class="sec-head"><span class="biome">Lava Core</span><h2>Contact & Connectivity</h2></div>
       <div class="panel contact">
-        <p class="contact-lead">Ready to collaborate or discuss internship opportunities? Drop a message through any channel below, or download my complete CV sheet.</p>
-        
-        <div style="margin-bottom: 20px;">
-          <a class="btn" href="https://drive.google.com/file/d/1-s7e1VZhmoRQvFGhib7wACuQl_LZOaqD/view?usp=sharing" target="_blank" rel="noopener">
-            <span class="spr" data-spr="book" style="margin-right: 8px;"></span> See My CV
-          </a>
-        </div>
+        <p class="contact-lead">Interested in collaborating or discussing database/data engineering opportunities? Feel free to reach out directly.</p>
 
-        <div class="crow"><span class="lab">Email</span><span class="val" id="emailVal">filbert.tanuarta@binus.ac.id</span>
-          <button class="btn sm" type="button" id="copyBtn" data-copy="filbert.tanuarta@binus.ac.id">Copy</button></div>
+        <div class="crow"><span class="lab">Email</span><span class="val" id="emailVal">filberttanuarta@gmail.com</span>
+          <button class="btn sm" type="button" id="copyBtn" data-copy="filberttanuarta@gmail.com">Copy</button></div>
+        <div class="crow"><span class="lab">Phone</span><span class="val">+62 822-3559-6539</span>
+          <a class="btn sm alt" href="tel:+6282235596539">Call</a></div>
         <div class="crow"><span class="lab">LinkedIn</span><span class="val">linkedin.com/in/filberttanuarta</span>
-          <a class="btn sm alt" href="https://www.linkedin.com/in/filbert-tanuarta-825b152a6/" target="_blank" rel="noopener">Open</a></div>
+          <a class="btn sm alt" href="https://www.linkedin.com/in/filberttanuarta" target="_blank" rel="noopener">Open</a></div>
         <div class="crow"><span class="lab">GitHub</span><span class="val">github.com/FilbertTanuarta</span>
-          <a class="btn sm alt" href="https://github.com/fill926" target="_blank" rel="noopener">Open</a></div>
+          <a class="btn sm alt" href="https://github.com/FilbertTanuarta" target="_blank" rel="noopener">Open</a></div>
       </div>
     </div>
   </section>
@@ -196,7 +272,7 @@
 
 <footer class="layer bedrock foot">
   <div class="wrap">
-    <p>© 2026 Filbert Tanuarta. Built with HTML, CSS, JavaScript & Web Audio API.</p>
+    <p>© 2026 Filbert Tanuarta. Built with HTML, CSS, & JavaScript.</p>
     <p>Press keys 1 to 6 to teleport across dimensions.</p>
   </div>
 </footer>
