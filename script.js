@@ -7,32 +7,21 @@
   
   function rng(seed){var s=seed>>>0;return function(){s=(Math.imul(s,1664525)+1013904223)>>>0;return s/4294967296}}
 
-  /* ---------- Web Audio API: 8-Bit Sound Generator ---------- */
- /* ---------- Sistem Audio (File MP3 External) ---------- */
-  // Pastikan file-file .mp3 ini berada di folder yang sama dengan script.js
+  /* ---------- Sound Effects (MP3 Setup) ---------- */
   var sfx = {
-    // Suara "stop" yang kamu maksud untuk semua klik tombol dan pergantian siang/malam
-    'click': new Audio('freesound_community-pixel-sound-effect-4-82881.mp3'), 
-    
-    // Suara untuk transisi perpindahan halaman (hotbar menu)
-    'levelUp': new Audio('lolo_s-stop-474070.mp3'),
-    
-    // Suara untuk karakter melompat
-    'jump': new Audio('lumora_studios-pixel-jump-319167.mp3')
+    'click': new Audio('lolo_s-stop-474070.mp3'), // Suara stop/click untuk button & day/night
+    'levelUp': new Audio('freesound_community-pixel-sound-effect-4-82881.mp3'), // Level transition sound
+    'jump': new Audio('lumora_studios-pixel-jump-319167.mp3') // Character jump sound
   };
 
-  // Pre-load audio agar tidak delay saat diputar
   Object.values(sfx).forEach(function(audio) {
     audio.load();
   });
 
   window.playSFX = function(type) {
     if (sfx[type]) {
-      // Reset waktu ke 0 detik agar bisa diputar beruntun dengan cepat (spam click)
       sfx[type].currentTime = 0;
-      sfx[type].play().catch(function(e) {
-        // Abaikan peringatan jika browser memblokir audio sebelum user berinteraksi
-      });
+      sfx[type].play().catch(function(e){});
     }
   };
 
@@ -80,7 +69,7 @@
     el.appendChild(c);
   });
 
-  /* ---------- Block Textures (Dirt, Ore, Lava) ---------- */
+  /* ---------- Block Textures ---------- */
   function tile(size,draw){var c=document.createElement('canvas');c.width=c.height=size;draw(c.getContext('2d'),size);return 'url('+c.toDataURL('image/png')+')'}
   function speck(x,n,base,cols,dens,seed){
     x.fillStyle=base;x.fillRect(0,0,n,n);var r=rng(seed);
@@ -120,7 +109,7 @@
     }));
   }catch(e){}
 
-  /* ---------- Star Animations ---------- */
+  /* ---------- Stars Generator ---------- */
   (function(){
     var sky=$('#sky'),r=rng(7);
     for(var i=0;i<40;i++){
@@ -131,7 +120,7 @@
     }
   })();
 
-  /* ---------- Day / Night Toggle & Interactive Orbs ---------- */
+  /* ---------- Day / Night Toggle ---------- */
   var mq=window.matchMedia('(prefers-color-scheme: dark)');
   var themeBtn=$('#themeBtn');
   function eff(){return root.getAttribute('data-theme')||(mq.matches?'dark':'light')}
@@ -144,8 +133,6 @@
   }
   
   themeBtn.addEventListener('click', toggleTheme);
-  
-  // Orbs can be clicked to toggle theme
   $$('.interactive-orb').forEach(function(orb) {
     orb.addEventListener('click', toggleTheme);
   });
@@ -154,7 +141,7 @@
   if(mq.addEventListener)mq.addEventListener('change',paintMode);
   paintMode();
 
-  /* ---------- Jumping Character Animation ---------- */
+  /* ---------- Character Jump Animation ---------- */
   var heroChar = $('.hero-char');
   heroChar.addEventListener('click', function() {
     if (!heroChar.classList.contains('jump-anim')) {
@@ -166,59 +153,45 @@
     }
   });
 
+  /* ---------- Fast Blinking Animation ---------- */
   (function() {
-    // Cari canvas di dalam karakter hero
     var heroCanvas = $('.hero-char canvas');
     if (!heroCanvas) return;
     var ctx = heroCanvas.getContext('2d');
     
-    // Simpan warna asli (Terbuka)
-    // Row 4: . . S W E S S E W S . . 
-    // indeks x: 3 & 8 adalah W (#ffffff), 4 & 7 adalah E (#2a3f9e)
     function openEyes() {
-      ctx.fillStyle = '#ffffff'; // White W
+      ctx.fillStyle = '#ffffff';
       ctx.fillRect(3, 4, 1, 1);
       ctx.fillRect(8, 4, 1, 1);
-      
-      ctx.fillStyle = '#2a3f9e'; // Blue E
+      ctx.fillStyle = '#2a3f9e';
       ctx.fillRect(4, 4, 1, 1);
       ctx.fillRect(7, 4, 1, 1);
     }
     
-    // Ubah mata menjadi tertutup (menggunakan warna kulit S: #e9b48e)
     function closeEyes() {
-      ctx.fillStyle = '#e9b48e'; // Skin color S
-      ctx.fillRect(3, 4, 2, 1); // kiri
-      ctx.fillRect(7, 4, 2, 1); // kanan
+      ctx.fillStyle = '#e9b48e';
+      ctx.fillRect(3, 4, 2, 1);
+      ctx.fillRect(7, 4, 2, 1);
     }
     
-    // Pengulangan acak untuk efek kedipan alami
     function blink() {
-      // 10% kemungkinan untuk kedipan ganda (double blink)
-      var delay = Math.random() < 0.1 ? 80 : 150; 
-      
+      var delay = Math.random() < 0.1 ? 50 : 100;
       closeEyes();
       setTimeout(function() {
         openEyes();
-        
-        // Double blink
-        if (delay === 80) {
+        if (delay === 50) {
           setTimeout(function() {
             closeEyes();
-            setTimeout(openEyes, 80);
-          }, 100);
+            setTimeout(openEyes, 50);
+          }, 80);
         }
       }, delay);
-      
-      // Kedip lagi setiap 3 hingga 6 detik sekali secara acak
       setTimeout(blink, 1000 + Math.random() * 2000);
     }
-    
-    // Jalankan pertama kali setelah sprite selesai digambar
-    setTimeout(blink, 1500);
+    setTimeout(blink, 1000);
   })();
 
-  /* ---------- Gamification Logic: SPA & EXP Bar ---------- */
+  /* ---------- SPA Routing & EXP Bar ---------- */
   var ids=['home','about','skills','projects','experience','contact'];
   var biome=['Surface','Dirt Layer','Stone Cave','Treasure Mine','Crystal Cave','Lava Core'];
   var label=['Home','About','Skills','Projects','Experience','Contact'];
@@ -230,61 +203,43 @@
   var expNameLabel=$('#itemName');
   
   function setActive(i){
-    // Update active class on hotbar and remove focus
     slots.forEach(function(a,k){
       a.classList.toggle('on',k===i);
-      if(k===i) {
-        a.setAttribute('aria-current','true');
-      } else {
-        a.removeAttribute('aria-current');
-      }
-      
-      // Hapus fokus dari semua slot untuk mencegah outline tertinggal
-      a.blur(); 
+      if(k===i) a.setAttribute('aria-current','true');
+      else a.removeAttribute('aria-current');
+      a.blur(); // Blur focus outline
     });
     
-    // Trigger hotbar label animation reset
     expNameLabel.style.animation = 'none';
-    expNameLabel.offsetHeight; /* trigger reflow */
+    expNameLabel.offsetHeight;
     expNameLabel.style.animation = null; 
 
-    // Update HUD text
     expNameLabel.textContent=label[i];
     $('#biome').textContent=biome[i];
     depthEl.textContent=depths[i];
     
-    // Update EXP Bar (Maxed out on the last page)
     var expPercentage = (i / (ids.length - 1)) * 100;
     expFill.style.width = expPercentage + '%';
   }
 
-  // Go function changed to tab-switching mode
-  window.go = function(i, fromHotbar = false){
-    // 1. Hide all pages
+  window.go = function(i, fromUserClick){
     $$('.page').forEach(function(el) {
       el.classList.remove('active');
     });
     
-    // 2. Show target page
     var targetEl = document.getElementById(ids[i]);
     if (targetEl) {
       targetEl.classList.add('active');
       window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); 
-      
-      // Mainkan suara jika di-click dari tombol
-      if(fromHotbar) {
-          playSFX('levelUp');
+      if(fromUserClick) {
+        playSFX('levelUp');
       }
     }
-    
-    // 3. Update HUD & EXP
     setActive(i);
   };
 
-  // Set initial EXP
   setActive(0);
 
-  // Hotbar click event listener
   slots.forEach(function(a,i){
     a.addEventListener('click',function(e){
       e.preventDefault();
@@ -292,21 +247,13 @@
     });
   });
 
-  // Tombol navigasi (View Projects & Contact Me)
-  $$('button.btn[onclick^="go("]').forEach(function(btn) {
-    var onclickVal = btn.getAttribute('onclick');
-    var targetIndex = parseInt(onclickVal.replace('go(', '').replace(')', ''));
-    btn.setAttribute('onclick', 'go(' + targetIndex + ', true)');
-  });
-
-  // Keyboard (1-6) event listener
   window.addEventListener('keydown',function(e){
     if(e.metaKey||e.ctrlKey||e.altKey)return;
     var n=parseInt(e.key,10);
     if(n>=1&&n<=6) go(n-1, true);
   });
 
-  /* ---------- Copy Email to Clipboard ---------- */
+  /* ---------- Copy Email ---------- */
   var cb=$('#copyBtn');
   function pick(){var r=document.createRange();r.selectNodeContents($('#emailVal'));var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
   function flash(t){cb.textContent=t;setTimeout(function(){cb.textContent='Copy'},1800)}
